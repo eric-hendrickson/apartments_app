@@ -86,11 +86,11 @@ RSpec.describe Apartment, type: :model do
     apartment = Apartment.new
     expect(apartment.phone_number).to eq(nil)
   end
-  it "must have phone_number be an integer" do
+  it "must have phone_number be a String" do
     apartment = Apartment.new
     apartment.phone_number = 1
-    expect(apartment.phone_number).to be_a(Integer)
-    expect(apartment.phone_number).to eq(1)
+    expect(apartment.phone_number).to be_a(String)
+    expect(apartment.phone_number).to eq("1")
   end
   it "must have a value for hours to show the apartment (nil on initialization)" do
     apartment = Apartment.new
@@ -101,5 +101,18 @@ RSpec.describe Apartment, type: :model do
     apartment.country = 1
     expect(apartment.country).to be_a(String)
     expect(apartment.country).to eq("1")
+  end
+  it "must be able to successfully concatenate address elements into one string" do
+    apartment = Apartment.new
+    expect(apartment.address).to eq("")
+    apartment.city = "San Diego"
+    expect(apartment.address).to eq("San Diego")
+    apartment.address1 = "3950 Mahaila Ave"
+    expect(apartment.address).to eq("3950 Mahaila Ave San Diego")
+    apartment.address2 = "Apt N25"
+    apartment.state = "California"
+    apartment.zip = "92122"
+    apartment.country = "USA"
+    expect(apartment.address).to eq("3950 Mahaila Ave Apt N25 San Diego California 92122 USA")
   end
 end
