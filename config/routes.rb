@@ -15,6 +15,10 @@ Rails.application.routes.draw do
   # Example resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
 
+  resources :apartments do
+    # GET /apartments/:apartment_id/map_locations
+    get 'map_location'        # Add this and the "do" "end"
+  end
   # Example resource route with options:
   #   resources :products do
   #     member do

@@ -104,15 +104,15 @@ RSpec.describe Apartment, type: :model do
   end
   it "must be able to successfully concatenate address elements into one string" do
     apartment = Apartment.new
-    expect(apartment.address).to eq("")
+    expect(apartment.full_address).to eq("")
     apartment.city = "San Diego"
-    expect(apartment.address).to eq("San Diego")
+    expect(apartment.full_address).to eq("San Diego")
     apartment.address1 = "3950 Mahaila Ave"
-    expect(apartment.address).to eq("3950 Mahaila Ave San Diego")
+    expect(apartment.full_address).to eq("3950 Mahaila Ave San Diego")
     apartment.address2 = "Apt N25"
     apartment.state = "California"
     apartment.zip = "92122"
     apartment.country = "USA"
-    expect(apartment.address).to eq("3950 Mahaila Ave Apt N25 San Diego California 92122 USA")
+    expect(apartment.full_address).to eq("3950 Mahaila Ave Apt N25 San Diego California 92122 USA")
   end
 end
