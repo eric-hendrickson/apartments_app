@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :apartments
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -19,6 +18,7 @@ Rails.application.routes.draw do
   resources :apartments do
     # GET /apartments/:apartment_id/map_locations
     get 'map_location'        # Add this and the "do" "end"
+    get 'map_all_locations', on: :collection
   end
   # Example resource route with options:
   #   resources :products do
