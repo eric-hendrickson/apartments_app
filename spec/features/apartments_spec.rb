@@ -40,12 +40,10 @@ RSpec.feature "Apartments", type: :feature do
     end
 
     Steps 'Creating a new listing' do
-      Given 'I am a the "New Apartment" page' do
+      Given 'I am at the "New Apartment" page' do
         visit '/apartments/new'
       end
       And 'I fill in the forms' do
-        fill_in 'apartment[latitude]', with: '1.0'
-        fill_in 'apartment[longitude]', with: '1.0'
         fill_in 'apartment[address1]', with: '3950 Mahaila Ave'
         fill_in 'apartment[address2]', with: 'Apt N25'
         fill_in 'apartment[city]', with: 'San Diego'
@@ -55,6 +53,9 @@ RSpec.feature "Apartments", type: :feature do
         fill_in 'apartment[name]', with: 'Eric Hendrickson'
         fill_in 'apartment[phone_number]', with: '619-555-5555'
         fill_in 'apartment[hours]', with: '12-5 PM'
+      end
+      And 'I add a picture' do
+        attach_file('apartment[image]', '/Users/tiiwaaz/Development/railsbridge/apartments_app/foo.jpg')
       end
       And 'I click "Create Apartment"' do
         click_button 'Create Apartment'
@@ -79,12 +80,18 @@ RSpec.feature "Apartments", type: :feature do
         fill_in 'apartment[phone_number]', with: '619-555-5555'
         fill_in 'apartment[hours]', with: '12-5 PM'
       end
+      And 'I add a picture' do
+        attach_file('apartment[image]', '/Users/tiiwaaz/Development/railsbridge/apartments_app/foo.jpg')
+      end
       And 'I click "Create Apartment"' do
         click_button 'Create Apartment'
       end
       Then 'there should be a map on the page' do
         page.should have_css("div#apartment_map")
         expect(page).to have_content("Google Map will appear here...")
+      end
+      And 'there should be an image on the page' do
+        page.should have_css("img")
       end
       And 'I should see the inputted data' do
         expect(page).to have_content('3950 Mahaila Ave')

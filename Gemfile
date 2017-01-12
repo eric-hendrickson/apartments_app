@@ -37,6 +37,9 @@ gem 'devise'
 # Omniauth
 gem 'omniauth-twitter'
 
+# Paperclip
+gem 'paperclip'
+
 # Geocoder gems
 gem 'underscore-rails'
 gem 'geocoder'
