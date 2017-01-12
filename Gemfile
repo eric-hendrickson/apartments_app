@@ -34,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Devise for authentication
 gem 'devise'
+# Omniauth
+gem 'omniauth-twitter'
 
 # Geocoder gems
 gem 'underscore-rails'
