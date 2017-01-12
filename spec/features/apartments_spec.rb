@@ -55,6 +55,7 @@ RSpec.feature "Apartments", type: :feature do
         fill_in 'apartment[hours]', with: '12-5 PM'
       end
       And 'I add a picture' do
+        # Note: you'll have to change the path depending on where this repo is
         attach_file('apartment[image]', '/Users/tiiwaaz/Development/railsbridge/apartments_app/foo.jpg')
       end
       And 'I click "Create Apartment"' do
@@ -81,6 +82,7 @@ RSpec.feature "Apartments", type: :feature do
         fill_in 'apartment[hours]', with: '12-5 PM'
       end
       And 'I add a picture' do
+        # Note: you'll have to change the path depending on where this repo is
         attach_file('apartment[image]', '/Users/tiiwaaz/Development/railsbridge/apartments_app/foo.jpg')
       end
       And 'I click "Create Apartment"' do

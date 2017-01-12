@@ -36,6 +36,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 # Omniauth
 gem 'omniauth-twitter'
+# CanCanCan and Rolify
+gem 'cancancan'
+gem 'rolify'
 
 # Paperclip
 gem 'paperclip'
