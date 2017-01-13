@@ -41,13 +41,15 @@ class ApartmentsController < ApplicationController
   # PATCH/PUT /apartments/1
   # PATCH/PUT /apartments/1.json
   def update
-    respond_to do |format|
-      if @apartment.update(apartment_params)
-        format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @apartment }
-      else
-        format.html { render :edit }
-        format.json { render json: @apartment.errors, status: :unprocessable_entity }
+    if @apartment.user_id == current_user.id
+      respond_to do |format|
+        if @apartment.update(apartment_params)
+          format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
+          format.json { render :show, status: :ok, location: @apartment }
+        else
+          format.html { render :edit }
+          format.json { render json: @apartment.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
@@ -55,10 +57,12 @@ class ApartmentsController < ApplicationController
   # DELETE /apartments/1
   # DELETE /apartments/1.json
   def destroy
-    @apartment.destroy
-    respond_to do |format|
-      format.html { redirect_to apartments_url, notice: 'Apartment was successfully destroyed.' }
-      format.json { head :no_content }
+    if @apartment.user_id == current_user.id
+      @apartment.destroy
+      respond_to do |format|
+        format.html { redirect_to apartments_url, notice: 'Apartment was successfully destroyed.' }
+        format.json { head :no_content }
+      end
     end
   end
 
@@ -89,6 +93,6 @@ class ApartmentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def apartment_params
-      params.require(:apartment).permit(:latitude, :longitude, :address1, :address2, :city, :zip, :state, :country, :name, :phone_number, :hours, :image)
+      params.require(:apartment).permit(:latitude, :longitude, :address1, :address2, :city, :zip, :state, :country, :name, :phone_number, :hours, :image, :user_id)
     end
 end
