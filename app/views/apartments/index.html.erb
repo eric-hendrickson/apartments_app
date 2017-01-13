@@ -37,14 +37,8 @@
         <td><%= apartment.phone_number %></td>
         <td><%= apartment.hours %></td>
         <td><%= link_to 'Show', apartment %></td>
-<<<<<<< HEAD
         <% if !current_user.nil? && apartment.user_id == current_user.id %>
-=======
-        <% if !current_user.nil? %>
-          <% if apartment.user_id == current_user.id %>
->>>>>>> c66bd29453cda0d28ace02ad7ae41e8ced8be99c
           <td><%= link_to 'Edit', edit_apartment_path(apartment) %></td>
-          <%end%>
           <td><%= link_to 'Destroy', apartment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
         <% end %>
       </tr>
