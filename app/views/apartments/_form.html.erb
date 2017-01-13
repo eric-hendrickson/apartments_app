@@ -59,6 +59,9 @@
     <%= f.label :image %><br>
     <%= f.file_field :image %>
   </div>
+  <div class="field">
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  </div>
   <br>
   <div class="actions">
     <%= f.submit %>
