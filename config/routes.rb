@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'admins' => "admins#index"
+  put 'admins/:id' => "admins#update"
+  patch 'admins/:id' => "admins#update"
+
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks" }
 
   # The priority is based upon order of creation: first created -> highest priority.
