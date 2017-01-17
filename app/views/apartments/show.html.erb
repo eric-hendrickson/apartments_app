@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div id="apartment_map" data-apartment-id="<%=@apartment.id%>">Google Map will appear here...</div>
 
 <%= link_to image_tag(@apartment.image.url(:large)), @apartment.image.url %>
@@ -54,7 +52,7 @@
   <%= @apartment.hours %>
 </p>
 
-<% if !current_user.nil? && @apartment.user_id == current_user.id %>
+<% if !current_user.nil? && (@apartment.user_id == current_user.id || current_user.has_role?(:admin)) %>
   <%= link_to 'Edit', edit_apartment_path(@apartment) %> |
 <% end %>
 <%= link_to 'Back', apartments_path %>

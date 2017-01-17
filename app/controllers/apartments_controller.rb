@@ -42,7 +42,7 @@ class ApartmentsController < ApplicationController
   # PATCH/PUT /apartments/1
   # PATCH/PUT /apartments/1.json
   def update
-    if @apartment.user_id == current_user.id
+    if @apartment.user_id == current_user.id || current_user.has_role?(:admin)
       respond_to do |format|
         if @apartment.update(apartment_params)
           format.html { redirect_to @apartment, notice: 'Apartment was successfully updated.' }
@@ -58,7 +58,7 @@ class ApartmentsController < ApplicationController
   # DELETE /apartments/1
   # DELETE /apartments/1.json
   def destroy
-    if @apartment.user_id == current_user.id
+    if @apartment.user_id == current_user.id || current_user.has_role?(:admin)
       @apartment.destroy
       respond_to do |format|
         format.html { redirect_to apartments_url, notice: 'Apartment was successfully destroyed.' }

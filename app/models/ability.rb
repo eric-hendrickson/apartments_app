@@ -6,7 +6,7 @@ class Ability
       user = User.new
     end
     if user.has_role? :admin
-      # can :manage, :all
+      can :manage, :all
     else user.has_role? :default
       can :read, Apartment
       can :manage, Apartment, user_id: user.id
