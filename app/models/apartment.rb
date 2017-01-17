@@ -7,6 +7,8 @@ class Apartment < ActiveRecord::Base
     content_type: { content_type: ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
     size: { in: 0..10.megabytes }
 
+  resourcify
+
   def full_address
     address = ""
     address += self.address1.to_s + " " + self.address2.to_s + " " + self.city.to_s + " " + self.state.to_s + " " + self.zip.to_s + " " + self.country.to_s
