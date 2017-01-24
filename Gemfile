@@ -59,6 +59,8 @@ group :test do
   gem 'rspec-example_steps'
   gem 'launchy'
   gem 'selenium-webdriver'
+
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -67,4 +69,12 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'quiet_assets'
+end
+
+group :production do
+  gem 'rails_12factor'
 end
